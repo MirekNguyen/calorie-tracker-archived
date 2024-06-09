@@ -1,18 +1,8 @@
 import { CalendarIcon } from "@/app/components/CalendarIcon";
-import { FoodLog } from "@/app/food-log";
 import React, { SVGProps } from "react";
-import fs from 'fs';
-import path from 'path';
-
-type Ingredients = {
-  name: string,
-  calories: number,
-}
+import { FoodLog } from "@/app/FoodLog";
 
 const DailyIntake = async () => {
-  const filePath = path.resolve(process.cwd(), 'db/ingredients.json');
-  const fileContents = fs.readFileSync(filePath, 'utf8');
-  const ingredients: Ingredients[] = await JSON.parse(fileContents);
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

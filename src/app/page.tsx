@@ -1,5 +1,4 @@
-import Image from "next/image";
-import DailyIntake from "./daily-intake";
+import DailyIntake from "@/app/DailyIntake";
 
 export default function Home() {
   return (
