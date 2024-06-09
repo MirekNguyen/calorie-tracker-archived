@@ -1,8 +1,17 @@
 import { CalendarIcon } from "@/app/components/CalendarIcon";
 import React, { SVGProps } from "react";
 import { FoodLog } from "@/app/FoodLog";
+import { fetchIngredients, fetchUserById } from "@/app/_actions";
 
 const DailyIntake = async () => {
+  const ingredients = await fetchIngredients();
+
+  const totalCalories = ingredients.reduce((sum, ingredient) => {
+    return sum + ingredient.calories;
+  }, 0);
+  const user = await fetchUserById(1);
+  console.log(user);
+  console.log('Total Calories:', totalCalories);
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -18,29 +27,13 @@ const DailyIntake = async () => {
           </div>
           <div className="flex items-center justify-between">
             <div className="text-4xl font-bold">
-              1,850{" "}
+              {totalCalories}{" "}
               <span className="text-2xl font-normal text-gray-500 dark:text-gray-400">
-                / 2,000
+                / {user?.calorie_intake} kcal
               </span>
             </div>
             <div className="bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-400 px-3 py-1 rounded-full text-sm font-medium">
               92%
-            </div>
-          </div>
-          <div className="mt-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-lg font-bold">Breakfast</h3>
-                <p className="text-gray-500 dark:text-gray-400">450 calories</p>
-              </div>
-              <div>
-                <h3 className="text-lg font-bold">Lunch</h3>
-                <p className="text-gray-500 dark:text-gray-400">650 calories</p>
-              </div>
-              <div>
-                <h3 className="text-lg font-bold">Dinner</h3>
-                <p className="text-gray-500 dark:text-gray-400">750 calories</p>
-              </div>
             </div>
           </div>
         </div>

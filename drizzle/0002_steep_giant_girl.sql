@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `calorie_intake` int NOT NULL;
