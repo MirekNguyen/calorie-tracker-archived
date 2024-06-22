@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm';
 import db from '../../db/db';
-import { ingredients, users } from '../../db/schema';
+import { meals, users } from '../../db/schema';
 
 export async function fetchUsers () {
   const fetchedUsers = await db.select().from(users);
@@ -8,7 +8,7 @@ export async function fetchUsers () {
 }
 
 export async function fetchIngredients() {
-  const fetchedIngredients = await db.select().from(ingredients);
+  const fetchedIngredients = await db.select().from(meals);
   return fetchedIngredients;
 }
 
