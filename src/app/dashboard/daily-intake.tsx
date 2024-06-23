@@ -1,7 +1,7 @@
-import { CalendarIcon } from "@/app/components/CalendarIcon";
-import React, { SVGProps } from "react";
-import { FoodLog } from "@/app/FoodLog";
+import React from "react";
 import { fetchIngredients, fetchUserById } from "@/app/_actions";
+import { FoodLog } from "@/app/dashboard/food-log";
+import { CalendarIcon } from "lucide-react";
 
 const DailyIntake = async () => {
   const ingredients = await fetchIngredients();
@@ -11,7 +11,7 @@ const DailyIntake = async () => {
   }, 0);
   const user = await fetchUserById(1);
   console.log(user);
-  console.log('Total Calories:', totalCalories);
+  console.log("Total Calories:", totalCalories);
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

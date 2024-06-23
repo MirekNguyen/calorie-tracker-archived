@@ -3,7 +3,7 @@ import mysql from "mysql2/promise";
 import * as schema from "./schema";
 
 const connection = await mysql.createConnection({
-  host: "127.0.0.1",
+  host: "localhost",
   user: "root",
   database: "calorie_tracker",
   password: "password",

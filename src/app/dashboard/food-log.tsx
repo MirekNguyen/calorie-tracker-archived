@@ -1,5 +1,7 @@
-import { fetchIngredients, fetchUsers } from "@/app/_actions";
-import { FilePenIcon } from "@/app/components/FilePenIcon";
+import { fetchIngredients } from "@/app/_actions";
+import { NewItem } from "@/app/dashboard/new-item";
+import { Button } from "@/components/ui/button";
+import { FilePenIcon } from "lucide-react";
 
 type Ingredient = {
   name: string;
@@ -13,6 +15,7 @@ export const FoodLog = async () => {
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
       <h2 className="text-2xl font-bold mb-4">Food Log</h2>
       <div className="space-y-4">
+        <NewItem />
         {ingredients.map((ingredient, index) => (
           <>
             <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4">
@@ -28,6 +31,7 @@ export const FoodLog = async () => {
                   {ingredient.calories} calories
                 </p>
               </div>
+              <Button>Update</Button>
               <div className="text-gray-500 dark:text-gray-400">
                 <FilePenIcon className="w-5 h-5" />
               </div>

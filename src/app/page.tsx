@@ -1,7 +1,11 @@
-import DailyIntake from "@/app/DailyIntake";
+import { Header } from "@/app/components/header";
+import DailyIntake from "@/app/dashboard/daily-intake";
 
 export default function Home() {
   return (
-  <DailyIntake />
+    <>
+      <Header />
+      <DailyIntake />
+    </>
   );
 }
