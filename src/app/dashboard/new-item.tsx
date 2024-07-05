@@ -1,8 +1,22 @@
 "use client";
+import { Search } from "@/app/components/search";
+import { Ingredient } from "@/components/types";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import axios from "axios";
+import { FC, useEffect, useState } from "react";
 
-export const NewItem = () => {
+type NewItemProps = {
+  ingredients: Ingredient[];
+};
+export const NewItem: FC<NewItemProps> = () => {
+  const [ingredientList, setIngredientList] = useState<Ingredient[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get("/api/ingredients");
+      setIngredientList(data);
+    };
+    fetchData();
+  }, []);
   const [showAddForm, setShowAddForm] = useState(false);
   return (
     <>
@@ -13,6 +27,7 @@ export const NewItem = () => {
       >
         {showAddForm ? "Close" : "Add New Item"}
       </Button>
+      {showAddForm && <Search ingredients={ingredientList} />}
     </>
   );
 };

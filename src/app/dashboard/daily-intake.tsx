@@ -1,9 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import { fetchIngredients, fetchUserById } from "@/app/_actions";
 import { FoodLog } from "@/app/dashboard/food-log";
 import { CalendarIcon } from "lucide-react";
 
-const DailyIntake = async () => {
+const DailyIntake : FC = async () => {
   const ingredients = await fetchIngredients();
 
   const totalCalories = ingredients.reduce((sum, ingredient) => {
