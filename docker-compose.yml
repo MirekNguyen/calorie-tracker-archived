@@ -1,0 +1,16 @@
+volumes:
+  calorie-tracker-data:
+
+services:
+  calorie-tracker-db:
+    image: postgres:16.1-alpine
+    container_name: calorie-tracker-db
+    environment:
+      - POSTGRES_DB=calorie_tracker
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    ports:
+      - 13306:5432
+    volumes:
+      - calorie-tracker-data:/var/lib/mysql
+    restart: unless-stopped
