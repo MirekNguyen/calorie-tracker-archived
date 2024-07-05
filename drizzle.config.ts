@@ -1,4 +1,4 @@
-import { defineConfig } from 'drizzle-kit';
+import { Config, defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
   schema: './db/schema.ts',
@@ -12,4 +12,4 @@ export default defineConfig({
     port: 13306,
     ssl: false,
   }
-});
+}) satisfies Config;
