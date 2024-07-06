@@ -1,4 +1,4 @@
-import { findUsersWithPosts } from "@/app/_actions";
+import { findUsersWithPosts } from "@/actions/user-actions";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest, res: NextResponse) {

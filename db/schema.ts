@@ -1,5 +1,6 @@
 import { relations } from "drizzle-orm";
 import {
+  date,
   integer,
   pgTable,
   serial,
@@ -47,3 +48,29 @@ export const postRelations = relations(posts, ({ one }) => ({
     references: [users.id],
   }),
 }));
+
+export const meals = pgTable("meals", {
+  id: serial("id").primaryKey(),
+  name: varchar("name", { length: 256 }),
+  calories: integer("calories"),
+});
+
+export const mealRelations = relations(meals, ({ many }) => ({
+  mealEntries: many(mealEntries),
+}));
+
+export const mealEntries = pgTable("meal_entries", {
+  id: serial("id").primaryKey(),
+  date: date("date"),
+  mealId: integer("meal_id")
+    .notNull()
+    .references(() => meals.id),
+});
+
+export const mealEntryRelations = relations(mealEntries, ({ one }) => ({
+  meals: one(meals, {
+    fields: [mealEntries.mealId],
+    references: [meals.id],
+  }),
+}));
+

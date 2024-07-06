@@ -8,15 +8,7 @@ import { FC, useEffect, useState } from "react";
 type NewItemProps = {
   ingredients: Ingredient[];
 };
-export const NewItem: FC<NewItemProps> = () => {
-  const [ingredientList, setIngredientList] = useState<Ingredient[]>([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get("/api/ingredients");
-      setIngredientList(data);
-    };
-    fetchData();
-  }, []);
+export const NewItem: FC = () => {
   const [showAddForm, setShowAddForm] = useState(false);
   return (
     <>
@@ -27,7 +19,7 @@ export const NewItem: FC<NewItemProps> = () => {
       >
         {showAddForm ? "Close" : "Add New Item"}
       </Button>
-      {showAddForm && <Search ingredients={ingredientList} />}
+      {showAddForm && <Search />}
     </>
   );
 };

@@ -1,15 +1,26 @@
 "use client";
 import { NewItem } from "@/app/dashboard/new-item";
-import { Ingredient } from "@/components/types";
 import axios from "axios";
 import { FC, useEffect, useState } from "react";
 
+type MealEntry = {
+  name: string,
+  date: Date,
+  mealId: number,
+  meals : Meal
+}
+type Meal = {
+  id: number,
+  name: string,
+  calories: number
+}
 export const FoodLog: FC = () => {
-  const [mealEntryList, setMealEntryList] = useState<Ingredient[]>([]);
+  const [mealEntries, setMealEntries] = useState<Meal[]>([]);
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get("/api/meal-entry");
-      setMealEntryList(data);
+      const mealEntriesArray : MealEntry[] = await axios.get("/api/meal-entries").then((response) => response.data);
+      const mealsArray: Meal[] = mealEntriesArray.map((mealEntry) => mealEntry.meals);
+      setMealEntries(mealsArray);
     };
     fetchData();
   }, []);
@@ -17,14 +28,14 @@ export const FoodLog: FC = () => {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
       <h2 className="text-2xl font-bold mb-4">Food Log</h2>
+      <NewItem />
       <div className="space-y-4">
-        <NewItem />
-        {mealEntryList.map((mealEntry) => (
+        {mealEntries.map((meal: Meal) => (
           <li
-            key={mealEntry.name}
+            key={meal.name}
             className="text-gray-700 dark:text-gray-300"
           >
-            {mealEntry.name}
+            {meal.name}
           </li>
         ))}
       </div>

@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "drizzle:studio": "drizzle-kit studio"
+    "drizzle:studio": "drizzle-kit studio",
+    "drizzle:generate": "drizzle-kit generate",
+    "drizzle:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",
@@ -18,8 +20,10 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "date-fns": "^3.6.0",
     "drizzle-orm": "^0.31.2",
     "lucide-react": "^0.390.0",
+    "moment": "^2.30.1",
     "mysql2": "^3.10.2",
     "net": "^1.0.2",
     "next": "14.2.3",

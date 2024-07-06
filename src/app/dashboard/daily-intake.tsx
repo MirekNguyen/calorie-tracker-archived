@@ -1,17 +1,9 @@
+"use client";
 import React, { FC } from "react";
-import { fetchIngredients, fetchUserById } from "@/app/_actions";
 import { FoodLog } from "@/app/dashboard/food-log";
 import { CalendarIcon } from "lucide-react";
 
-const DailyIntake : FC = async () => {
-  const ingredients = await fetchIngredients();
-
-  const totalCalories = ingredients.reduce((sum, ingredient) => {
-    return sum + ingredient.calories;
-  }, 0);
-  const user = await fetchUserById(1);
-  console.log(user);
-  console.log("Total Calories:", totalCalories);
+const DailyIntake : FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -27,9 +19,9 @@ const DailyIntake : FC = async () => {
           </div>
           <div className="flex items-center justify-between">
             <div className="text-4xl font-bold">
-              {totalCalories}{" "}
+              {0}{" "}
               <span className="text-2xl font-normal text-gray-500 dark:text-gray-400">
-                / {user?.calorie_intake} kcal
+                / userKcal kcal
               </span>
             </div>
             <div className="bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-400 px-3 py-1 rounded-full text-sm font-medium">

@@ -15,6 +15,20 @@
       "when": 1720219905026,
       "tag": "0001_steady_warhawk",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1720222810961,
+      "tag": "0002_ancient_glorian",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1720223921495,
+      "tag": "0003_blue_sasquatch",
+      "breakpoints": true
     }
   ]
 }
