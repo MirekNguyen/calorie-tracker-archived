@@ -1,19 +1,9 @@
 "use client";
 import { NewItem } from "@/app/dashboard/new-item";
+import { Meal, MealEntry } from "@/components/types";
 import axios from "axios";
 import { FC, useEffect, useState } from "react";
 
-type MealEntry = {
-  name: string,
-  date: Date,
-  mealId: number,
-  meals : Meal
-}
-type Meal = {
-  id: number,
-  name: string,
-  calories: number
-}
 export const FoodLog: FC = () => {
   const [mealEntries, setMealEntries] = useState<Meal[]>([]);
   useEffect(() => {
