@@ -69,6 +69,7 @@ export const mealEntries = pgTable("meal_entries", {
   mealId: integer("meal_id")
     .notNull()
     .references(() => meals.id),
+  amount: integer("amount"),
 });
 
 export const mealEntryRelations = relations(mealEntries, ({ one }) => ({
