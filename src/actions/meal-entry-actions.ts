@@ -22,10 +22,11 @@ export const findMealEntriesByDate = async (date: string) => {
   return mealsQuery;
 };
 
-export const postMealEntry = async (mealId: number) => {
+export const postMealEntry = async (mealId: number, amount: number) => {
   const response = await db.insert(mealEntries).values({
     mealId: mealId,
     date: format(new Date(), "yyyy-MM-dd"),
+    amount: amount
   });
   return response;
 };

@@ -9,6 +9,7 @@ export type MealEntry = {
   date: Date;
   mealId: number;
   meals: Meal;
+  amount: number;
 };
 
 export type Meal = {
@@ -21,4 +22,4 @@ export type Meal = {
 };
 
 // export type MealWithEntryId = Meal & Pick<MealEntry, "mealId">;
-export type MealWithEntryId = Meal & { mealId: number };
+export type MealWithEntryId = Meal & { mealId: number, amount: number};

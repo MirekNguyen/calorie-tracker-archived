@@ -31,16 +31,21 @@ export const Search: FC = () => {
   const queryClient = useQueryClient();
   const [mealName, setMealName] = useState('Example meal');
   const [mealQueryParam, setMealQueryParam] = useState<Meal>();
-  const postMealEntry = async (item: Meal) => {
-    await axios.post('/api/meal-entries', JSON.stringify({ mealId: item.id }));
+  const [mealAmount, _setMealAmount] = useState(1);
+  const postMealEntry = async (item: Meal, mealAmount: number) => {
+    await axios.post(
+      '/api/meal-entries',
+      JSON.stringify({ mealId: item.id, amount: mealAmount }),
+    );
     queryClient.invalidateQueries({ queryKey: ['data'] });
   };
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!mealQueryParam) return;
-    postMealEntry(mealQueryParam);
+    postMealEntry(mealQueryParam, event.currentTarget.amount.value);
   };
   return (
+    // div settings max height
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="outline">Add meal entry</Button>
@@ -50,7 +55,8 @@ export const Search: FC = () => {
           <DialogHeader>
             <DialogTitle>Add meal</DialogTitle>
             <DialogDescription>
-              Make changes to your meal entry here. Click save when you are done.
+              Make changes to your meal entry here. Click save when you are
+              done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
@@ -70,9 +76,9 @@ export const Search: FC = () => {
               <Label htmlFor="amount" className="text-right">
                 Amount
               </Label>
-              <Input id="amount" defaultValue="1" className="col-span-3" />
+              <Input id="amount" defaultValue="1" className="col-span-3" type='number' step='0.01' />
             </div>
-            <Command>
+            <Command className='h-[200px]'>
               <CommandInput placeholder="Type a command or search..." />
               <CommandList>
                 <CommandEmpty>No results found.</CommandEmpty>

@@ -1,0 +1,1 @@
+ALTER TABLE "meal_entries" ALTER COLUMN "amount" SET DATA TYPE real;

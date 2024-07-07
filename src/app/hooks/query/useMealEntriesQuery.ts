@@ -14,6 +14,7 @@ const getMealEntries = async (): Promise<MealWithEntryId[]> => {
     proteins: mealEntry.meals.proteins,
     fats: mealEntry.meals.fats,
     carbs: mealEntry.meals.carbs,
+    amount: mealEntry.amount,
   })) satisfies MealWithEntryId[];
   console.log(mealsArray);
 
