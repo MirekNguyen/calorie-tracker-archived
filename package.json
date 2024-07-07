@@ -9,7 +9,8 @@
     "lint": "next lint",
     "drizzle:studio": "drizzle-kit studio",
     "drizzle:generate": "drizzle-kit generate",
-    "drizzle:migrate": "drizzle-kit migrate"
+    "drizzle:migrate": "drizzle-kit migrate",
+    "drizzle:drop": "drizzle-kit drop"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",

@@ -12,7 +12,6 @@ import { useQueryClient } from '@tanstack/react-query';
 
 export const FoodLog: FC = ({setCalorieIntake}) => {
   const queryClient = useQueryClient();
-  const [showAddForm, setShowAddForm] = useState(false);
   const { data: mealEntries, error, isLoading } = useMealEntriesQuery();
   useEffect(() => {
     const totalCalories = mealEntries?.reduce((acc, meal) => acc + meal.calories, 0) || 0;
@@ -29,11 +28,8 @@ export const FoodLog: FC = ({setCalorieIntake}) => {
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl font-bold">Food Log</h2>
-        <Button size="sm" variant="outline" onClick={() => setShowAddForm(!showAddForm)}>
-          {showAddForm ? "Close" : "Add New Item"}
-        </Button>
+        <Search />
       </div>
-      {showAddForm && <Search setShowAddForm={setShowAddForm}/>}
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
       <div className="space-y-4">
@@ -49,10 +45,10 @@ export const FoodLog: FC = ({setCalorieIntake}) => {
                   <span className="font-medium">Calories:</span> {meal.calories}
                 </div>
                 <div>
-                  <span className="font-medium">Protein:</span> {meal.calories}g
+                  <span className="font-medium">Protein:</span> {meal.proteins}g
                 </div>
                 <div>
-                  <span className="font-medium">Fat:</span> {meal.calories}g
+                  <span className="font-medium">Fat:</span> {meal.fats}g
                 </div>
                 <div>
                   <span className="font-medium">Carbs:</span> {meal.calories}g

@@ -6,13 +6,16 @@ const getMealEntries = async (): Promise<MealWithEntryId[]> => {
   const mealEntriesArray: MealEntry[] = await axios
     .get('/api/meal-entries')
     .then((response) => response.data);
-  console.log(mealEntriesArray);
   const mealsArray: MealWithEntryId[] = mealEntriesArray.map((mealEntry) => ({
     id: mealEntry.meals.id,
     name: mealEntry.meals.name,
     calories: mealEntry.meals.calories,
     mealId: mealEntry.id,
-  }));
+    proteins: mealEntry.meals.proteins,
+    fats: mealEntry.meals.fats,
+    carbs: mealEntry.meals.carbs,
+  })) satisfies MealWithEntryId[];
+  console.log(mealsArray);
 
   return mealsArray;
 };

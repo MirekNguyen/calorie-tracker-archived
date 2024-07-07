@@ -3,6 +3,7 @@ import {
   date,
   integer,
   pgTable,
+  real,
   serial,
   text,
   uniqueIndex,
@@ -53,6 +54,9 @@ export const meals = pgTable("meals", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 256 }),
   calories: integer("calories"),
+  proteins: real("proteins"),
+  carbs: real("carbs"),
+  fats: real("fats"),
 });
 
 export const mealRelations = relations(meals, ({ many }) => ({

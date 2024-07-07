@@ -29,6 +29,13 @@
       "when": 1720223921495,
       "tag": "0003_blue_sasquatch",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1720370694688,
+      "tag": "0004_harsh_spot",
+      "breakpoints": true
     }
   ]
 }

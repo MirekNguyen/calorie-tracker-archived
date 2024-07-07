@@ -15,6 +15,9 @@ export type Meal = {
   id: number;
   name: string;
   calories: number;
+  proteins: number;
+  carbs: number;
+  fats: number;
 };
 
 // export type MealWithEntryId = Meal & Pick<MealEntry, "mealId">;
