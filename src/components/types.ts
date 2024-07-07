@@ -4,6 +4,7 @@ export type Ingredient = {
 };
 
 export type MealEntry = {
+  id: number;
   name: string;
   date: Date;
   mealId: number;
@@ -15,3 +16,6 @@ export type Meal = {
   name: string;
   calories: number;
 };
+
+// export type MealWithEntryId = Meal & Pick<MealEntry, "mealId">;
+export type MealWithEntryId = Meal & { mealId: number };

@@ -1,7 +1,7 @@
-"use client";
-import { Search } from "@/app/components/search";
-import { Button } from "@/components/ui/button";
-import { FC, useState } from "react";
+'use client';
+import { Search } from '@/app/components/search';
+import { Button } from '@/components/ui/button';
+import { FC, useState } from 'react';
 
 export const NewItem: FC = () => {
   const [showAddForm, setShowAddForm] = useState(false);
@@ -12,7 +12,7 @@ export const NewItem: FC = () => {
         variant="outline"
         onClick={() => setShowAddForm(!showAddForm)}
       >
-        {showAddForm ? "Close" : "Add New Item"}
+        {showAddForm ? 'Close' : 'Add New Item'}
       </Button>
       {showAddForm && <Search />}
     </>

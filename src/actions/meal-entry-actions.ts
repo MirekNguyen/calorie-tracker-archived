@@ -29,3 +29,8 @@ export const postMealEntry = async (mealId: number) => {
   });
   return response;
 };
+
+export const deleteMealEntry = async (mealEntryId: number) => {
+  const response = await db.delete(mealEntries).where(eq(mealEntries.id, mealEntryId));
+  return response;
+};

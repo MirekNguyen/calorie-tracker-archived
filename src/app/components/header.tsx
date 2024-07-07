@@ -1,5 +1,5 @@
-import { Logo } from "@/app/components/Logo";
 import { Link } from "lucide-react";
+import { Logo } from "./logo";
 
 export const Header = () => {
   return (

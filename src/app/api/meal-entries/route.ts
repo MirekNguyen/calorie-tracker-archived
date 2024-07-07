@@ -1,5 +1,6 @@
 import { findMealById, getMealIdByName } from "@/actions/meal-actions";
 import {
+    deleteMealEntry,
   findMealEntries,
   findMealEntriesByDate,
   postMealEntry,
@@ -22,3 +23,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: "Meal not found" }, { status: 404 });
   }
 }
+
+export async function DELETE(req: NextRequest) {
+  const { mealId } = await req.json();
+  try {
+    const res = await deleteMealEntry(mealId);
+    return NextResponse.json(res);
+  } catch {
+    return NextResponse.json({ message: "Meal not found" }, { status: 404 });
+  }
+};
